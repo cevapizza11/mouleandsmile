@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Carte — Moule & Smile | Saint-Pierre-la-Mer</title>
+<meta name="description" content="La carte de Moule & Smile : moules-frites à volonté, petit-déjeuner, glacier et boissons. Saint-Pierre-la-Mer.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0b0a08;
+    --surface: #16130d;
+    --surface-alt: #1c1810;
+    --line: #322b1c;
+    --gold: #e2a929;
+    --gold-deep: #93711b;
+    --text: #f5efe2;
+    --text-muted: #a89a7e;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--bg); color: var(--text); font-family: var(--font-body);
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 24px; }
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background: rgba(11,10,8,0.9); backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:900px; margin:0 auto; padding:10px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand img{ height:66px; display:block; }
+  .nav-links{ display:flex; align-items:center; gap:22px; }
+  .nav-links a{ font-family: var(--font-mono); font-size:0.8rem; text-decoration:none; color: var(--text-muted); }
+  .nav-links a:hover{ color: var(--gold); }
+
+  .menu-hero{ padding:56px 0 36px; text-align:center; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    font-family: var(--font-mono); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    color: var(--gold); margin-bottom:14px; display:flex; align-items:center; justify-content:center; gap:10px;
+  }
+  .eyebrow::before, .eyebrow::after{ content:''; width:24px; height:1px; background: var(--gold-deep); }
+  h1{ font-family: var(--font-display); font-weight:700; font-size: clamp(2.2rem,5vw,3.2rem); }
+  .menu-hero p{ color: var(--text-muted); margin-top:14px; max-width:50ch; margin-left:auto; margin-right:auto; }
+
+  .menu-section{ padding:48px 0; border-bottom:1px solid var(--line); }
+  .menu-section:last-of-type{ border-bottom:none; }
+  .menu-section-title{
+    font-family: var(--font-display); font-weight:700; font-size:1.6rem; color: var(--gold);
+    margin-bottom:6px; text-align:center;
+  }
+  .menu-section-sub{ text-align:center; color: var(--text-muted); font-size:0.88rem; margin-bottom:32px; }
+
+  .menu-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap:18px;
+    padding:16px 0; border-bottom:1px dotted var(--line);
+  }
+  .menu-row:last-child{ border-bottom:none; }
+  .menu-row-name{ font-family: var(--font-display); font-weight:600; font-size:1.2rem; }
+  .menu-row-desc{ color: var(--text-muted); font-size:0.86rem; margin-top:3px; max-width:46ch; }
+  .menu-row-price{ font-family: var(--font-mono); color: var(--gold); font-size:1.1rem; white-space:nowrap; flex-shrink:0; }
+  .menu-row-price.free{ color: var(--text); }
+
+  .highlight-card{
+    background: var(--surface); border:1px solid var(--gold-deep); border-radius:16px;
+    padding:28px 26px; margin-bottom:32px;
+  }
+  .highlight-tag{ font-family: var(--font-mono); font-size:0.72rem; color: var(--gold); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; }
+
+  .note{ font-size:0.82rem; color: var(--text-muted); font-family: var(--font-mono); text-align:center; margin-top:24px; }
+
+  footer{ padding:40px 0; text-align:center; }
+  .footer-links{ display:flex; justify-content:center; gap:22px; font-size:0.88rem; color: var(--text-muted); margin-bottom:14px; }
+  .footer-links a:hover{ color: var(--gold); }
+  .build-tag{ font-family: var(--font-mono); font-size:0.66rem; color:#5c5439; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><img src="logo-moule-smile.png" alt="Moule & Smile"></div>
+    <div class="nav-links">
+      <a href="index.html">← Présentation</a>
+    </div>
+  </div>
+</header>
+
+<section class="menu-hero">
+  <div class="wrap">
+    <div class="eyebrow">La carte</div>
+    <h1>Moules-frites à volonté & alternatives marines</h1>
+    <p>Self-service, du petit-déjeuner au dernier service du soir. Tarifs prévisionnels — susceptibles d'ajustement avant l'ouverture.</p>
+  </div>
+</section>
+
+<section class="menu-section">
+  <div class="wrap">
+    <div class="menu-section-title">Restaurant — Moules-frites à volonté</div>
+    <div class="menu-section-sub">Service continu en salle et en terrasse, 11h30 – 23h</div>
+
+    <p class="note" style="margin-top:-16px; margin-bottom:28px;">Moules Bouzigues AOP, 6 sauces maison : marinière, roquefort, curry, crème-échalote, tomate-chorizo, provençale</p>
+
+    <div class="highlight-card">
+      <div class="highlight-tag">Les 3 paliers</div>
+      <div class="menu-row" style="border:none; padding-top:0;">
+        <div>
+          <div class="menu-row-name">Palier 1 — À volonté seul</div>
+          <div class="menu-row-desc">Moules-frites à volonté, sauce au choix.</div>
+        </div>
+        <div class="menu-row-price">21,90€</div>
+      </div>
+      <div class="menu-row">
+        <div>
+          <div class="menu-row-name">Palier 2 — À volonté + boisson</div>
+          <div class="menu-row-desc">Moules-frites à volonté, boisson incluse.</div>
+        </div>
+        <div class="menu-row-price">24,90€</div>
+      </div>
+      <div class="menu-row">
+        <div>
+          <div class="menu-row-name">Palier 3 — À volonté + boisson + dessert</div>
+          <div class="menu-row-desc">La formule complète.</div>
+        </div>
+        <div class="menu-row-price">28,90€</div>
+      </div>
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Calamars à volonté</div>
+        <div class="menu-row-desc">Alternative marine, frits maison.</div>
+      </div>
+      <div class="menu-row-price">19,90€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Fish & chips maison</div>
+        <div class="menu-row-desc">Portion unique, filet de poisson pané et frites.</div>
+      </div>
+      <div class="menu-row-price">14,90€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Dessert du jour</div>
+        <div class="menu-row-desc">Hors palier 3.</div>
+      </div>
+      <div class="menu-row-price">3,50€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Enfant / Ado (8-17 ans)</div>
+        <div class="menu-row-desc">Moules-frites à volonté, tranche unique.</div>
+      </div>
+      <div class="menu-row-price">15,90€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Enfant (0-7 ans)</div>
+        <div class="menu-row-desc">Offert pour 1 adulte payant (palier 1 minimum). Boisson en supplément.</div>
+      </div>
+      <div class="menu-row-price free">Gratuit (+3€ boisson)</div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section">
+  <div class="wrap">
+    <div class="menu-section-title">Petit-déjeuner</div>
+    <div class="menu-section-sub">8h – 10h</div>
+
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Continental</div>
+        <div class="menu-row-desc">Viennoiserie, boisson chaude, jus de fruit.</div>
+      </div>
+      <div class="menu-row-price">8,50€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Complet</div>
+        <div class="menu-row-desc">Formule continentale enrichie.</div>
+      </div>
+      <div class="menu-row-price">11,50€</div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section">
+  <div class="wrap">
+    <div class="menu-section-title">Pichets & Vente à emporter</div>
+    <div class="menu-section-sub">Sur place ou à emporter, 14h – 18h</div>
+
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Pichet de vin 50cl</div>
+      </div>
+      <div class="menu-row-price">10,00€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Pichet concert (jeudi/samedi)</div>
+        <div class="menu-row-desc">-50% les soirs de concert.</div>
+      </div>
+      <div class="menu-row-price">5,00€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Cornet à emporter — petit / moyen / grand</div>
+        <div class="menu-row-desc">Moules ou calamars, à emporter toute la journée (8h-23h).</div>
+      </div>
+      <div class="menu-row-price">10€ / 15€ / 22€</div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section">
+  <div class="wrap">
+    <div class="menu-section-title">Glacier & Douceurs</div>
+    <div class="menu-section-sub">Bar véranda, ouvert toute la journée</div>
+
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Sundae / Crêpe / Gaufre garnie</div>
+        <div class="menu-row-desc">Plusieurs garnitures au choix.</div>
+      </div>
+      <div class="menu-row-price">4,50€ – 7,00€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Granita</div>
+        <div class="menu-row-desc">30cl ou 50cl.</div>
+      </div>
+      <div class="menu-row-price">3,50€ / 5,00€</div>
+    </div>
+    <div class="menu-row">
+      <div>
+        <div class="menu-row-name">Jus d'orange frais pressé</div>
+        <div class="menu-row-desc">Pressé à la commande.</div>
+      </div>
+      <div class="menu-row-price">4,50€</div>
+    </div>
+
+    <p class="note">Carte boissons (softs, bière pression, café) à venir</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">Présentation</a>
+    </div>
+    <div class="build-tag">v.31/07/2026 15:48</div>
+  </div>
+</footer>
+
+</body>
+</html>

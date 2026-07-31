@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moule & Smile — Saint-Pierre-la-Mer | Moules-frites à volonté</title>
+<meta name="description" content="Moule & Smile, moules-frites à volonté à Saint-Pierre-la-Mer. Petit-déjeuner, restaurant, snacking et glacier de 8h à minuit. Ouverture mars 2027.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Moule & Smile",
+  "servesCuisine": "Moules-frites",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1 Boulevard de la Douane",
+    "addressLocality": "Saint-Pierre-la-Mer, Fleury-d'Aude",
+    "postalCode": "11560",
+    "addressCountry": "FR"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --bg: #0b0a08;
+    --surface: #16130d;
+    --surface-alt: #1c1810;
+    --line: #322b1c;
+    --gold: #e2a929;
+    --gold-deep: #93711b;
+    --text: #f5efe2;
+    --text-muted: #a89a7e;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--bg); color: var(--text); font-family: var(--font-body);
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background: rgba(11,10,8,0.9); backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:10px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand img{ height:78px; display:block; }
+  .nav-links{ display:flex; align-items:center; gap:22px; }
+  .nav-links a{ font-family: var(--font-mono); font-size:0.8rem; text-decoration:none; color: var(--text-muted); }
+  .nav-links a:hover{ color: var(--gold); }
+  .nav-cta{
+    font-family: var(--font-mono); font-size:0.76rem; color: var(--bg); background: var(--gold);
+    padding:9px 16px; border-radius:999px; text-decoration:none; white-space:nowrap;
+  }
+
+  .hero{ position:relative; padding:72px 0 68px; overflow:hidden; border-bottom:1px solid var(--line); }
+  .wave{ position:absolute; pointer-events:none; opacity:0.07; }
+  .wave.w1{ top:-40px; right:-60px; width:380px; }
+  .wave.w2{ bottom:-90px; left:-70px; width:300px; opacity:0.05; }
+  .eyebrow{
+    font-family: var(--font-mono); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    color: var(--gold); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:8px; height:8px; border-radius:50%; background: var(--gold); box-shadow:0 0 12px 2px var(--gold); }
+  h1{
+    font-family: var(--font-display); font-weight:700; font-size: clamp(2.4rem, 5.6vw, 4rem);
+    line-height:1.08; max-width:17ch;
+  }
+  h1 em{ font-style:normal; color: var(--gold); }
+  .hero-sub{ margin-top:20px; max-width:50ch; color: var(--text-muted); font-size:1.06rem; }
+  .hero-meta{ margin-top:32px; display:flex; flex-wrap:wrap; gap:28px; }
+  .meta-item{ font-family: var(--font-mono); font-size:0.86rem; color: var(--text-muted); }
+  .meta-item b{ display:block; color: var(--text); font-family: var(--font-body); font-weight:600; font-size:0.95rem; margin-bottom:2px; }
+  .hero-cta{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family: var(--font-body); font-weight:600; font-size:0.95rem; padding:14px 26px; border-radius:10px;
+    text-decoration:none; display:inline-flex; align-items:center; gap:10px; transition: transform .15s ease;
+  }
+  .btn-primary{ background: var(--gold); color:#1a1509; }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost{ border:1px solid var(--line); color: var(--text); background: var(--surface); }
+  .btn-ghost:hover{ border-color: var(--gold-deep); transform: translateY(-2px); }
+
+  section{ padding:66px 0; border-bottom:1px solid var(--line); }
+  .section-head{ margin-bottom:40px; max-width:60ch; }
+  .section-label{ font-family: var(--font-mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color: var(--gold); margin-bottom:10px; }
+  h2{ font-family: var(--font-display); font-weight:700; font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+  .section-sub{ color: var(--text-muted); margin-top:10px; }
+
+  /* créneaux */
+  .slots-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:16px; }
+  .slot-card{ background: var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px 20px; }
+  .slot-time{ font-family: var(--font-mono); color: var(--gold); font-size:0.82rem; margin-bottom:10px; }
+  .slot-name{ font-family: var(--font-display); font-weight:700; font-size:1.15rem; margin-bottom:6px; }
+  .slot-desc{ color: var(--text-muted); font-size:0.88rem; }
+
+  .why-list{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:28px; }
+  .why-item{ display:flex; gap:16px; align-items:flex-start; }
+  .why-num{ font-family: var(--font-mono); color: var(--gold-deep); font-size:0.85rem; padding-top:3px; }
+  .why-item h3{ font-family: var(--font-display); font-weight:700; font-size:1.15rem; margin-bottom:6px; }
+  .why-item p{ color: var(--text-muted); font-size:0.92rem; }
+
+  .practical{ display:grid; grid-template-columns: 1.1fr 1fr; gap:40px; }
+  @media (max-width:780px){ .practical{ grid-template-columns:1fr; } }
+  ul.services{ list-style:none; margin-top:22px; display:flex; flex-wrap:wrap; gap:10px; }
+  ul.services li{ font-family: var(--font-mono); font-size:0.76rem; border:1px solid var(--line); border-radius:999px; padding:7px 14px; color: var(--text-muted); }
+
+  .map-frame{ border-radius:16px; overflow:hidden; border:1px solid var(--line); height:380px; }
+  .map-frame iframe{ width:100%; height:100%; border:0; filter: grayscale(0.2) sepia(0.15) contrast(0.92) invert(0.9); }
+  .map-details{ margin-top:20px; display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between; }
+  .address-block b{ font-family: var(--font-display); font-size:1.05rem; display:block; margin-bottom:4px; }
+  .address-block span{ color: var(--text-muted); font-family: var(--font-mono); font-size:0.86rem; }
+
+  footer{ padding:44px 0; }
+  .footer-inner{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:center; }
+  .footer-brand{ font-family: var(--font-display); font-weight:700; }
+  .footer-links{ display:flex; gap:22px; flex-wrap:wrap; font-size:0.88rem; color: var(--text-muted); }
+  .footer-links a:hover{ color: var(--gold); }
+  .build-tag{ font-family: var(--font-mono); font-size:0.66rem; color:#5c5439; text-align:right; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><img src="logo-moule-smile.png" alt="Moule & Smile"></div>
+    <div class="nav-links">
+      <a href="carte.html">La carte</a>
+      <a class="nav-cta" href="#infos">Ouverture mars 2027 →</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="wave w1" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 Q50,60 100,100 T200,100 T300,100 T400,100" stroke="#e2a929" stroke-width="3" fill="none"/><path d="M0,140 Q50,100 100,140 T200,140 T300,140 T400,140" stroke="#e2a929" stroke-width="2" fill="none"/></svg>
+  <svg class="wave w2" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 Q50,60 100,100 T200,100 T300,100 T400,100" stroke="#e2a929" stroke-width="3" fill="none"/></svg>
+  <div class="wrap">
+    <div class="eyebrow">Saint-Pierre-la-Mer · Ouverture 1er mars 2027</div>
+    <h1>Moules-frites <em>à volonté</em>, de 8h à minuit</h1>
+    <p class="hero-sub">Restaurant continu, petit-déjeuner et vente à emporter, boulevard de la Douane. 257 places, frites fraîches cuites à la demande, moules de Bouzigues cuites minute — jamais réchauffées.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>1 Boulevard de la Douane</b>11560 Saint-Pierre-la-Mer</div>
+      <div class="meta-item"><b>8h – 23h</b>7j/7 en saison</div>
+      <div class="meta-item"><b>257 places</b>115 salle + 142 terrasse</div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="carte.html">Voir la carte</a>
+      <a class="btn btn-ghost" href="#infos">Infos pratiques</a>
+    </div>
+  </div>
+</section>
+
+<section id="creneaux">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Une journée entière</div>
+      <h2>Du petit-déjeuner à la fermeture</h2>
+      <p class="section-sub">Restaurant en service continu, petit-déjeuner et vente à emporter — pour ne jamais rater l'ouverture.</p>
+    </div>
+    <div class="slots-grid">
+      <div class="slot-card">
+        <div class="slot-time">8h – 10h</div>
+        <div class="slot-name">Petit-déjeuner</div>
+        <div class="slot-desc">Continental ou complet, pour les résidents et vacanciers du quartier.</div>
+      </div>
+      <div class="slot-card">
+        <div class="slot-time">11h30 – 23h</div>
+        <div class="slot-name">Restaurant à volonté</div>
+        <div class="slot-desc">Service continu, moules-frites et alternatives marines à volonté.</div>
+      </div>
+      <div class="slot-card">
+        <div class="slot-time">14h – 18h</div>
+        <div class="slot-name">Vente à emporter</div>
+        <div class="slot-desc">Cornets petit / moyen / grand pour la plage ou la terrasse.</div>
+      </div>
+      <div class="slot-card">
+        <div class="slot-time">Toute la journée</div>
+        <div class="slot-name">Glacier & bar véranda</div>
+        <div class="slot-desc">Granitas, sundae, crêpes, gaufres et pichets de vin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="univers">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Le concept</div>
+      <h2>Moules à volonté, frites cuites à la demande</h2>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div><h3>Moules Bouzigues AOP</h3><p>Cuites minute, jamais réchauffées, en 6 sauces maison : marinière, roquefort, curry, crème-échalote, tomate-chorizo, provençale.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div><h3>Frites 100% maison</h3><p>Pommes de terre lavées et coupées sur place, cuisson à la demande, jamais de précuisson.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div><h3>Alternatives marines</h3><p>Calamars-frites à volonté et fish & chips maison pour ceux qui préfèrent varier.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div><h3>Enfants choyés</h3><p>Gratuit jusqu'à 7 ans, tarifs dédiés ados et enfants.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infos">
+  <div class="wrap practical">
+    <div>
+      <div class="section-label">Infos pratiques</div>
+      <h2 style="margin-bottom:24px;">Ce qu'il faut savoir avant de venir</h2>
+      <p class="section-sub">Établissement recevant du public, accès PMR et sanitaires aux normes en cours de finalisation avec l'architecte.</p>
+      <ul class="services">
+        <li>257 places (115 salle + 142 terrasse)</li>
+        <li>Accès PMR</li>
+        <li>Terrasse extérieure</li>
+        <li>Vente à emporter</li>
+        <li>Ouvert 8h – 23h</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-label">Contact</div>
+      <h2 style="margin-bottom:24px;">On vous tient au courant</h2>
+      <p class="section-sub" style="margin-bottom:22px;">Date d'ouverture définitive et actualités du chantier à venir sur cette page.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="carte.html">Voir la carte complète</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="acces">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Où nous trouver</div>
+      <h2>1 Boulevard de la Douane, Saint-Pierre-la-Mer</h2>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps?q=1+Boulevard+de+la+Douane,+11560+Saint-Pierre-la-Mer&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localisation Moule & Smile Saint-Pierre-la-Mer">
+      </iframe>
+    </div>
+    <div class="map-details">
+      <div class="address-block">
+        <b>Moule & Smile</b>
+        <span>1 Boulevard de la Douane · 11560 Saint-Pierre-la-Mer</span>
+      </div>
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=1+Boulevard+de+la+Douane+11560+Saint-Pierre-la-Mer" target="_blank" rel="noopener">Lancer l'itinéraire</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">Moule &amp; Smile — Saint-Pierre-la-Mer</div>
+      <div class="footer-links">
+        <a href="carte.html">La carte</a>
+      </div>
+    </div>
+    <div class="build-tag">v.31/07/2026 15:48</div>
+  </div>
+</footer>
+
+</body>
+</html>
