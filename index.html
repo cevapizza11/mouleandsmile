@@ -120,6 +120,8 @@
 
   .practical{ display:grid; grid-template-columns: 1.1fr 1fr; gap:40px; }
   @media (max-width:780px){ .practical{ grid-template-columns:1fr; } }
+  #visuel .wrap{ }
+  @media (max-width:780px){ #visuel .wrap{ grid-template-columns:1fr !important; } }
   ul.services{ list-style:none; margin-top:22px; display:flex; flex-wrap:wrap; gap:10px; }
   ul.services li{ font-family: var(--font-mono); font-size:0.76rem; border:1px solid var(--line); border-radius:999px; padding:7px 14px; color: var(--text-muted); }
 
@@ -196,6 +198,19 @@
         <div class="slot-name">Glacier & bar véranda</div>
         <div class="slot-desc">Granitas, sundae, crêpes, gaufres et pichets de vin.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="visuel">
+  <div class="wrap" style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:center;">
+    <div>
+      <img src="moules-photo.jpg" alt="Moules fraîches ouvertes, gros plan" style="width:100%; max-width:420px; display:block; margin:0 auto; border-radius:16px; object-fit:cover; aspect-ratio:1/1;">
+    </div>
+    <div>
+      <div class="section-label">Nos moules</div>
+      <h2 style="margin-bottom:16px;">Fraîches, ouvertes, généreuses</h2>
+      <p class="section-sub">Moules Bouzigues AOP, cuites minute et servies à volonté avec les frites fraîches. Photo d'illustration (libre de droit, Pexels) — à remplacer par une vraie photo du plat une fois la carte testée en cuisine.</p>
     </div>
   </div>
 </section>
@@ -284,7 +299,7 @@
         <a href="carte.html">La carte</a>
       </div>
     </div>
-    <div class="build-tag">v.31/07/2026 16:16</div>
+    <div class="build-tag">v.31/07/2026 16:53</div>
   </div>
 </footer>
 
