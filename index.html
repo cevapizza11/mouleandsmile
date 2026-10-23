@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moule & Smile — Saint-Pierre-la-Mer | Moules-frites à volonté</title>
-<meta name="description" content="Moule & Smile, moules-frites et calamars à volonté à Saint-Pierre-la-Mer. Service continu 8h–23h, de mai à septembre.">
+<meta name="description" content="Moule & Smile, moules-frites et calamars à volonté à Saint-Pierre-la-Mer. Service continu de 11h30 à 23h, de mars à octobre.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,6 +115,19 @@ section{padding:66px 0;border-bottom:1px solid var(--line)}
 /* ─── VIDÉO CARTE ─── */
 .video-frame{position:relative;border:2px solid var(--gold-deep);border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 20px 60px rgba(0,0,0,.45)}
 .video-frame video{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ─── HERO 2 COLONNES (texte à gauche, vidéo à droite) ─── */
+.hero-grid{display:grid;grid-template-columns:1fr;grid-template-areas:"text" "video" "meta" "cta";gap:28px}
+.hero-text{grid-area:text}.hero-video{grid-area:video}.hero-grid .hero-meta{grid-area:meta;margin-top:0}.hero-grid .hero-cta{grid-area:cta;margin-top:0}
+@media(max-width:959px){.hero-grid .hero-meta{gap:16px 24px}.hero-grid .meta-item{min-width:42%}}
+@media(min-width:960px){
+  .hero-grid{grid-template-columns:1.05fr 1fr;grid-template-areas:"text video" "meta video" "cta video";column-gap:48px;row-gap:28px;align-items:center}
+  .hero-grid .hero-meta{align-self:start}
+  .hero-grid h1{font-size:clamp(2.2rem,3.4vw,3.2rem)}
+  .hero-grid .hero-cta{align-self:start}
+}
+.video-play{position:absolute;inset:0;margin:auto;width:84px;height:84px;border-radius:50%;border:0;background:var(--gold);color:#1a1509;font-size:2rem;cursor:pointer;display:none;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.video-play.show{display:block}
 
 /* ─── FORMULES ─── */
 .formule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
@@ -232,31 +245,33 @@ footer{padding:44px 0}
     <path d="M0,100 Q50,60 100,100 T200,100 T300,100 T400,100" stroke="#e2a929" stroke-width="3" fill="none"/>
   </svg>
   <div class="wrap">
-    <div class="eyebrow">Saint-Pierre-la-Mer · Ouverture 1er mars 2027</div>
+    <div class="hero-grid">
+    <div class="hero-text">
+    <div class="eyebrow">Saint-Pierre-la-Mer · Ouverture mars 2027</div>
     <h1>Moules & calamars <em>à volonté,</em> face à la Méditerranée</h1>
-    <p class="hero-sub">Frites fraîches coupées chaque matin, moules et calamars cuisinés à la minute — jamais réchauffés. Service continu de 8h à 23h, en terrasse ou en salle.</p>
+    <p class="hero-sub">Frites fraîches, jamais surgelées, moules et calamars cuisinés à la minute — jamais réchauffés. Service continu de 11h30 à 23h, en terrasse ou en salle.</p>
+    </div>
+    <div class="hero-video">
+      <div class="video-frame">
+        <video id="carte-video" autoplay muted loop playsinline preload="auto" poster="carte-video-poster.jpg" aria-label="Vidéo de présentation de la carte Moule &amp; Smile">
+          <source src="carte-video.webm" type="video/webm">
+          <source src="carte-video.mp4" type="video/mp4">
+        </video>
+        <button class="video-play" id="video-play" type="button" aria-label="Lancer la vidéo">▶</button>
+      </div>
+    </div>
     <div class="hero-meta">
       <div class="meta-item"><b>1 Boulevard de la Douane</b>11560 Saint-Pierre-la-Mer</div>
-      <div class="meta-item"><b>8h – 23h</b>Mai – Septembre : 7j/7</div>
-      <div class="meta-item"><b>Mars, Avril, Octobre</b>Ouvert les week-ends</div>
-      <div class="meta-item"><b>257 places</b>115 salle + 142 terrasse</div>
+      <div class="meta-item"><b>11h30 – 23h</b>Service continu</div>
+      <div class="meta-item"><b>Mai – Septembre</b>7 jours sur 7</div>
+      <div class="meta-item"><b>Avril &amp; Octobre</b>Du mercredi au dimanche</div>
+      <div class="meta-item"><b>Mars</b>Du vendredi au dimanche</div>
+      <div class="meta-item"><b>240 places</b>Salle + terrasse</div>
     </div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#formule">Voir la carte</a>
       <a class="btn btn-ghost" href="#acces">Infos pratiques</a>
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════ VIDÉO CARTE ═══════════════ -->
-<section id="video">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">En vidéo</div>
-      <h2>La carte <em>en 45 secondes.</em></h2>
-    </div>
-    <div class="video-frame">
-      <video src="carte-video.mp4" poster="carte-video-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vidéo de présentation de la carte Moule &amp; Smile"></video>
     </div>
   </div>
 </section>
@@ -267,21 +282,21 @@ footer{padding:44px 0}
     <div class="section-head">
       <div class="section-label">La carte</div>
       <h2>Un prix, <em>à volonté.</em></h2>
-      <p class="section-sub">Moules ou calamars avec frites maison incluses — resservez-vous autant de fois que vous voulez.</p>
+      <p class="section-sub">Moules ou calamars avec frites fraîches incluses — resservez-vous autant de fois que vous voulez.</p>
     </div>
     <div class="formule-grid">
 
       <div class="formule-card featured" id="fc-moules">
         <div class="formule-badge">Adulte</div>
         <div class="formule-name" id="fc-moules-name">Moules Frites à volonté</div>
-        <div class="formule-desc">Moules fraîches cuisinées minute, 6 sauces maison au choix, frites maison. Resservez-vous.</div>
+        <div class="formule-desc">Moules fraîches cuisinées minute, 6 sauces maison au choix, frites fraîches. Resservez-vous.</div>
         <div class="formule-price" id="fc-moules-price">19,90€</div>
       </div>
 
       <div class="formule-card featured" id="fc-calamars">
         <div class="formule-badge">Adulte</div>
         <div class="formule-name" id="fc-calamars-name">Calamars Frites à volonté</div>
-        <div class="formule-desc">Calamars tendres cuisinés minute, frites maison, mêmes sauces qu'avec les moules.</div>
+        <div class="formule-desc">Calamars tendres cuisinés minute, frites fraîches, mêmes sauces qu'avec les moules.</div>
         <div class="formule-price" id="fc-calamars-price">19,90€</div>
       </div>
 
@@ -355,7 +370,7 @@ footer{padding:44px 0}
       </div>
       <div class="why-item">
         <div class="why-num">02</div>
-        <div><h3>Frites 100% maison</h3><p>Pommes de terre coupées sur place chaque matin, cuisson à la demande, jamais de précuisson.</p></div>
+        <div><h3>Frites fraîches</h3><p>Frites fraîches réfrigérées, jamais surgelées, cuites à la demande.</p></div>
       </div>
       <div class="why-item">
         <div class="why-num">03</div>
@@ -363,7 +378,7 @@ footer{padding:44px 0}
       </div>
       <div class="why-item">
         <div class="why-num">04</div>
-        <div><h3>De 8h à 23h</h3><p>Petit-déjeuner, déjeuner, dîner — service continu toute la journée, 7j/7 en saison.</p></div>
+        <div><h3>De 11h30 à 23h</h3><p>Déjeuner, après-midi, dîner — service continu sans interruption, 7j/7 de mai à septembre.</p></div>
       </div>
     </div>
   </div>
@@ -379,12 +394,17 @@ footer{padding:44px 0}
         <div class="slot-card">
           <div class="slot-time">Mai – Septembre</div>
           <div class="slot-name">7 jours / 7</div>
-          <div class="slot-desc">8h – 23h, service continu, petit-déjeuner inclus.</div>
+          <div class="slot-desc">11h30 – 23h, service continu.</div>
         </div>
         <div class="slot-card">
-          <div class="slot-time">Mars, Avril & Octobre</div>
-          <div class="slot-name">Week-ends uniquement</div>
-          <div class="slot-desc">Vendredi soir, samedi et dimanche.</div>
+          <div class="slot-time">Avril &amp; Octobre</div>
+          <div class="slot-name">Du mercredi au dimanche</div>
+          <div class="slot-desc">11h30 – 23h, service continu.</div>
+        </div>
+        <div class="slot-card">
+          <div class="slot-time">Mars</div>
+          <div class="slot-name">Du vendredi au dimanche</div>
+          <div class="slot-desc">11h30 – 23h, service continu.</div>
         </div>
       </div>
     </div>
@@ -392,11 +412,10 @@ footer{padding:44px 0}
       <div class="section-label">Services</div>
       <h2 style="margin-bottom:4px">Ce qu'on <em>propose.</em></h2>
       <ul class="services">
-        <li>257 places (115 salle + 142 terrasse)</li>
+        <li>240 places en salle et en terrasse</li>
         <li>Accès PMR</li>
         <li>Terrasse vue mer</li>
         <li>Vente à emporter</li>
-        <li>Petit-déjeuner dès 8h</li>
         <li>Glacier & bar véranda</li>
         <li>Granitas · Crêpes · Gaufres</li>
       </ul>
@@ -450,12 +469,26 @@ footer{padding:44px 0}
     <hr class="footer-sep">
     <div class="footer-inner">
       <div class="footer-copy">© 2026 Moule & Smile · Saint-Pierre-la-Mer · Fleury-d'Aude</div>
-      <div class="build-tag">v.23/10/2026 15:23</div>
+      <div class="build-tag">v.23/10/2026 15:41</div>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════════ FIREBASE ═══════════════ -->
+<script>
+// ─── VIDÉO : relance auto (certains navigateurs, ex. Tesla, bloquent la lecture automatique) ───
+(function(){
+  const v = document.getElementById('carte-video'), b = document.getElementById('video-play');
+  if(!v || !b) return;
+  v.muted = true;
+  const tryPlay = () => { const p = v.play(); if(p && p.catch) p.catch(() => b.classList.add('show')); };
+  b.addEventListener('click', () => { b.classList.remove('show'); v.play().catch(()=>{}); });
+  v.addEventListener('playing', () => b.classList.remove('show'));
+  v.addEventListener('error', () => b.classList.add('show'), true);
+  if(v.readyState >= 2) tryPlay(); else v.addEventListener('canplay', tryPlay, {once:true});
+  setTimeout(() => { if(v.paused) { tryPlay(); setTimeout(() => { if(v.paused) b.classList.add('show'); }, 800); } }, 2500);
+})();
+</script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script>
@@ -516,19 +549,14 @@ function renderSauces(sauces, sdm){
 
 // ─── RENDER HORAIRES ───
 function renderHoraires(h){
+  // Les horaires de l'admin sont enregistrés en texte libre : on n'utilise que h.ete / h.avriloct / h.mars s'ils existent
   const el = document.getElementById('horaires-val');
-  if(!el || !h) return;
+  if(!el || !h || typeof h !== 'object') return;
+  const d = '11h30 – 23h, service continu.';
   el.innerHTML = `
-    <div class="slot-card">
-      <div class="slot-time">Mai – Septembre</div>
-      <div class="slot-name">7 jours / 7</div>
-      <div class="slot-desc">${h.ete || '8h – 23h, service continu, petit-déjeuner inclus.'}</div>
-    </div>
-    <div class="slot-card">
-      <div class="slot-time">Mars, Avril & Octobre</div>
-      <div class="slot-name">Week-ends uniquement</div>
-      <div class="slot-desc">${h.intersaison || 'Vendredi soir, samedi et dimanche.'}</div>
-    </div>`;
+    <div class="slot-card"><div class="slot-time">Mai – Septembre</div><div class="slot-name">7 jours / 7</div><div class="slot-desc">${h.ete || d}</div></div>
+    <div class="slot-card"><div class="slot-time">Avril &amp; Octobre</div><div class="slot-name">Du mercredi au dimanche</div><div class="slot-desc">${h.avriloct || d}</div></div>
+    <div class="slot-card"><div class="slot-time">Mars</div><div class="slot-name">Du vendredi au dimanche</div><div class="slot-desc">${h.mars || d}</div></div>`;
 }
 
 // ─── CHARGEMENT FIREBASE ───
@@ -546,6 +574,7 @@ async function loadSiteConfig(){
   }
 }
 loadSiteConfig();
+
 </script>
 </body>
 </html>
