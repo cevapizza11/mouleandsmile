@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.01/10/2026 18:15 · Admin Moule & Smile · Firebase Firestore -->
+<!-- v.23/10/2026 14:54 · Admin Moule & Smile · Firebase Firestore -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
@@ -174,7 +174,7 @@ textarea{min-height:72px}
   <div class="a-header">
     <div>
       <div class="a-logo">Moule &amp; Smile</div>
-      <div class="a-sub">Gestion carte &amp; horaires</div>
+      <div class="a-sub">Gestion carte &amp; horaires · <span style="opacity:.6">v.23/10/2026 14:54</span></div>
     </div>
     <button class="a-logout" onclick="logout()">Déconnexion</button>
   </div>
@@ -347,12 +347,12 @@ function logout(){ pinBuffer=''; updateDots(); document.getElementById('app').st
 //  DONNÉES PAR DÉFAUT
 // ══════════════════════════════════════════
 const SAUCES_DEFAULT = [
-  {num:"I",  style:"01 · Classique",   name:"Marinière",          base:"Vin blanc · Échalotes · Persil",   desc:"La recette originale. Vin blanc, échalotes confites, persil frais et beurre de qualité. L'incontournable absolu."},
-  {num:"II", style:"02 · Raffinée",    name:"Crème & Safran",     base:"Crème · Safran · Méditerranée",    desc:"Crème légère infusée au safran pour un parfum subtil et une couleur solaire. Une touche de mer dorée."},
-  {num:"III",style:"03 · Ensoleillée", name:"Provençale",         base:"Tomate · Ail · Herbes",            desc:"Tomates mûres, ail, herbes de Provence et huile d'olive. Le soleil du Languedoc dans votre marmite."},
-  {num:"IV", style:"04 · Caractère",   name:"Roquefort",          base:"Roquefort · Crème · Audace",       desc:"Le Roquefort fondu dans une sauce onctueuse qui enrobe chaque coquille. Pour les audacieux."},
-  {num:"V",  style:"05 · Exotique",    name:"Curry Coco",         base:"Lait de coco · Curry · Coriandre", desc:"Lait de coco, curry doux et coriandre fraîche. Un voyage gustatif à quelques mètres de la plage."},
-  {num:"VI", style:"06 · Ibérique",    name:"Chorizo & Pimentón", base:"Chorizo · Pimentón · Fumé",        desc:"Chorizo fondant et pimentón fumé dans une sauce généreuse aux accents ibériques chaleureux."}
+  {num:"I",  style:"01 · Classique",   name:"Marinière",      base:"Vin blanc · Échalote · Persil",         desc:"Vin blanc, échalote, persil — la classique indémodable."},
+  {num:"II", style:"02 · Gourmande",   name:"Crème Échalote", base:"Crème · Échalotes · Vin blanc",         desc:"Crème fraîche, échalotes dorées, touche de vin blanc."},
+  {num:"III",style:"03 · Caractère",   name:"Roquefort",      base:"Crème · Roquefort · Muscade",           desc:"Crème, roquefort fondu, noix de muscade."},
+  {num:"IV", style:"04 · Exotique",    name:"Curry",          base:"Lait de coco · Curry · Coriandre",      desc:"Lait de coco, curry doux, coriandre fraîche."},
+  {num:"V",  style:"05 · Ibérique",    name:"Tomate Chorizo", base:"Tomate · Chorizo · Paprika fumé",       desc:"Sauce tomate relevée, chorizo ibérique, paprika fumé."},
+  {num:"VI", style:"06 · Ensoleillée", name:"Provençale",     base:"Tomate · Herbes · Ail",                 desc:"Tomates, herbes de Provence, ail, huile d'olive."}
 ];
 
 let currentData = {
