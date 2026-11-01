@@ -469,7 +469,7 @@ footer{padding:44px 0}
     <hr class="footer-sep">
     <div class="footer-inner">
       <div class="footer-copy">© 2026 Moule & Smile · Saint-Pierre-la-Mer · Fleury-d'Aude</div>
-      <div class="build-tag">v.23/10/2026 15:41</div>
+      <div class="build-tag">v.01/11/2026 19:22</div>
     </div>
   </div>
 </footer>
@@ -541,10 +541,17 @@ function renderSauces(sauces, sdm){
       <div class="sauce-name">${s.name}</div>
       <div class="sauce-desc">${s.desc||''}</div>
     </div>`).join('');
-  if(sdm){
-    const el = document.getElementById('sdm-body-txt');
-    if(el) el.textContent = sdm;
-  }
+  renderSdm(sdm);
+}
+// Sauce du moment : { name, body } enregistré par l'admin du site
+function renderSdm(sdm){
+  if(!sdm) return;
+  const nom = typeof sdm === 'string' ? sdm : (sdm.name||'');
+  const txt = typeof sdm === 'string' ? '' : (sdm.body||'');
+  const n = document.getElementById('sdm-body-txt');
+  const d = document.querySelector('#sdm-block .sdm-desc');
+  if(n && nom) n.textContent = nom;
+  if(d && txt) d.textContent = txt;
 }
 
 // ─── RENDER HORAIRES ───
@@ -567,6 +574,7 @@ async function loadSiteConfig(){
       const d = snap.data();
       if(d.formules)               renderFormules(d.formules);
       if(d.sauces && d.sauces.length) renderSauces(d.sauces, d.sauce_du_moment);
+      else if(d.sauce_du_moment)  renderSdm(d.sauce_du_moment);
       if(d.horaires)               renderHoraires(d.horaires);
     }
   } catch(err){
