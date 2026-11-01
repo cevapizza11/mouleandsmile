@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.23/10/2026 14:54 · Admin Moule & Smile · Firebase Firestore -->
+<!-- v.01/11/2026 19:16 · Admin Moule & Smile · Firebase Firestore -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Cormorant:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script>
 // ╔══════════════════════════════════════════════╗
 // ║  CONFIG FIREBASE — Moule & Smile             ║
@@ -144,27 +145,14 @@ textarea{min-height:72px}
   <div class="pin-logo">Moule & Smile</div>
   <div>
     <div class="pin-title">Administration</div>
-    <p class="pin-sub" style="margin-top:.5rem">Entrez votre code PIN</p>
+    <p class="pin-sub" style="margin-top:.5rem">Même mot de passe que l'admin carte</p>
   </div>
-  <div class="pin-dots" id="pin-dots">
-    <div class="pin-dot" id="pd0"></div>
-    <div class="pin-dot" id="pd1"></div>
-    <div class="pin-dot" id="pd2"></div>
-    <div class="pin-dot" id="pd3"></div>
-  </div>
-  <div class="pin-pad">
-    <button class="pin-btn" onclick="pinKey('1')">1</button>
-    <button class="pin-btn" onclick="pinKey('2')">2</button>
-    <button class="pin-btn" onclick="pinKey('3')">3</button>
-    <button class="pin-btn" onclick="pinKey('4')">4</button>
-    <button class="pin-btn" onclick="pinKey('5')">5</button>
-    <button class="pin-btn" onclick="pinKey('6')">6</button>
-    <button class="pin-btn" onclick="pinKey('7')">7</button>
-    <button class="pin-btn" onclick="pinKey('8')">8</button>
-    <button class="pin-btn" onclick="pinKey('9')">9</button>
-    <button class="pin-btn" onclick="pinKey('⌫')">⌫</button>
-    <button class="pin-btn" onclick="pinKey('0')">0</button>
-    <button class="pin-btn" onclick="pinKey('✓')">✓</button>
+  <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:300px">
+    <input type="password" id="pwd-equipe" placeholder="Mot de passe équipe" autocomplete="current-password"
+      onkeydown="if(event.key==='Enter')connexionEquipe()"
+      style="width:100%;padding:14px;border-radius:12px;border:1px solid rgba(201,168,76,.4);background:#0E0C08;color:#FDF8EE;font-size:16px;text-align:center;font-family:inherit">
+    <button onclick="connexionEquipe()" id="btn-connexion"
+      style="width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#E8C86A,#C9A84C);color:#060503;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Se connecter</button>
   </div>
   <div class="pin-err" id="pin-err"></div>
 </div>
@@ -174,7 +162,7 @@ textarea{min-height:72px}
   <div class="a-header">
     <div>
       <div class="a-logo">Moule &amp; Smile</div>
-      <div class="a-sub">Gestion carte &amp; horaires · <span style="opacity:.6">v.23/10/2026 14:54</span></div>
+      <div class="a-sub">Gestion carte &amp; horaires · <span style="opacity:.6">v.01/11/2026 19:16</span></div>
     </div>
     <button class="a-logout" onclick="logout()">Déconnexion</button>
   </div>
@@ -311,37 +299,31 @@ textarea{min-height:72px}
 
 <script>
 // ══════════════════════════════════════════
-//  PIN — personnalisez votre code ici
+//  CONNEXION ÉQUIPE (Firebase Auth) — même compte que l'admin carte
+//  Obligatoire : la base n'accepte plus les enregistrements sans connexion
 // ══════════════════════════════════════════
-const ADMIN_PIN = '1234'; // ← remplacez par votre PIN à 4 chiffres
-
-let pinBuffer = '';
-
-function pinKey(k){
-  const err = document.getElementById('pin-err');
-  if(k==='⌫'){ pinBuffer=pinBuffer.slice(0,-1); updateDots(); err.textContent=''; return; }
-  if(k==='✓' || pinBuffer.length===4){ if(k!=='✓'&&k!=='⌫'){pinBuffer+=k;updateDots();} checkPin(); return; }
-  if(pinBuffer.length<4){ pinBuffer+=k; updateDots(); if(pinBuffer.length===4) setTimeout(checkPin,120); }
+const EMAIL_EQUIPE = 'mouleandsmile11@gmail.com';
+let dejaCharge = false;
+function ouvrirApp(){
+  document.getElementById('pin-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  if(!dejaCharge){ dejaCharge=true; loadData(); }
 }
-function updateDots(){
-  for(let i=0;i<4;i++){
-    const d=document.getElementById('pd'+i);
-    d.classList.toggle('filled',i<pinBuffer.length);
-    d.classList.remove('wrong');
-  }
+firebase.auth().onAuthStateChanged(user=>{
+  if(user && !user.isAnonymous) ouvrirApp();
+  else { document.getElementById('app').style.display='none'; document.getElementById('pin-screen').style.display='flex'; dejaCharge=false; }
+});
+async function connexionEquipe(){
+  const pwd=document.getElementById('pwd-equipe').value;
+  const err=document.getElementById('pin-err');
+  err.textContent='';
+  if(!pwd){ err.textContent='Entrez le mot de passe'; return; }
+  const btn=document.getElementById('btn-connexion'); btn.disabled=true;
+  try{ await firebase.auth().signInWithEmailAndPassword(EMAIL_EQUIPE,pwd); }
+  catch(e){ err.textContent='Mot de passe incorrect'; }
+  btn.disabled=false;
 }
-function checkPin(){
-  if(pinBuffer===ADMIN_PIN){
-    document.getElementById('pin-screen').style.display='none';
-    document.getElementById('app').style.display='block';
-    loadData();
-  } else {
-    for(let i=0;i<4;i++) document.getElementById('pd'+i).classList.add('wrong');
-    document.getElementById('pin-err').textContent='Code incorrect';
-    setTimeout(()=>{pinBuffer='';updateDots();document.getElementById('pin-err').textContent='';},1200);
-  }
-}
-function logout(){ pinBuffer=''; updateDots(); document.getElementById('app').style.display='none'; document.getElementById('pin-screen').style.display='flex'; }
+function logout(){ firebase.auth().signOut(); document.getElementById('pwd-equipe').value=''; }
 
 // ══════════════════════════════════════════
 //  DONNÉES PAR DÉFAUT
