@@ -469,7 +469,7 @@ footer{padding:44px 0}
     <hr class="footer-sep">
     <div class="footer-inner">
       <div class="footer-copy">© 2026 Moule & Smile · Saint-Pierre-la-Mer · Fleury-d'Aude</div>
-      <div class="build-tag">v.12/11/2026 16:45</div>
+      <div class="build-tag">v.12/11/2026 17:15</div>
     </div>
   </div>
 </footer>
@@ -490,6 +490,7 @@ footer{padding:44px 0}
 })();
 </script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script>
 // ─── CONFIG — remplacer les VOTRE_... par les valeurs de ta console Firebase ───
@@ -581,7 +582,38 @@ async function loadSiteConfig(){
     console.info('Moule & Smile · Firebase non disponible, contenu statique utilisé.', err.message);
   }
 }
-loadSiteConfig();
+loadSiteConfig().then(prixDepuisAppli);
+
+// ─── PRIX DEPUIS L'APPLI DE COMMANDE (Firestore config/carte_v2) ───
+// Les prix des formules viennent de la carte de l'appli : un seul endroit pour changer un prix.
+// Un produit désactivé dans l'appli fait disparaître sa carte ici.
+function prixFormat(n){ n=Number(n)||0; return n===0 ? 'Gratuit' : n.toFixed(2).replace('.',',')+'€'; }
+async function prixDepuisAppli(){
+  try{
+    if(!firebase.auth().currentUser) await firebase.auth().signInAnonymously();
+    db.collection('config').doc('carte_v2').onSnapshot(doc=>{
+      const d = doc.exists ? doc.data() : null;
+      if(!d || !d.categories) return;
+      const tous = [];
+      d.categories.forEach(c=>(c.produits||[]).forEach(p=>tous.push(p)));
+      const trouve = (id, re) => tous.find(p=>p.id===id) || tous.find(p=>re.test(p.nom||''));
+      const regle = (prodId, re, prixElt, carteElt) => {
+        const p = trouve(prodId, re);
+        if(!p) return;
+        const el = document.getElementById(prixElt);
+        if(el) el.textContent = prixFormat(p.prix);
+        if(carteElt){ const c=document.getElementById(carteElt); if(c) c.style.display = (p.actif===false) ? 'none' : ''; }
+      };
+      regle('p1',  /moules.*volont/i,   'fc-moules-price',   'fc-moules');
+      regle('ca1', /calamars/i,         'fc-calamars-price', 'fc-calamars');
+      regle('fc1', /fish/i,             'fc-fish-price',     'fc-fish');
+      regle('en1', /enfant 0/i,         'enfant-tranche1-price');
+      regle('en2', /enfant.*6|ado/i,    'enfant-tranche2-price');
+    }, err=>console.info('Moule & Smile · prix de l\'appli non lus :', err.message));
+  }catch(err){
+    console.info('Moule & Smile · prix de l\'appli non lus :', err.message);
+  }
+}
 
 </script>
 </body>

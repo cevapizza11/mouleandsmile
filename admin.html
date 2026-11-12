@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.01/11/2026 19:16 · Admin Moule & Smile · Firebase Firestore -->
+<!-- v.12/11/2026 17:15 · Admin Moule & Smile · Firebase Firestore -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
@@ -162,7 +162,7 @@ textarea{min-height:72px}
   <div class="a-header">
     <div>
       <div class="a-logo">Moule &amp; Smile</div>
-      <div class="a-sub">Gestion carte &amp; horaires · <span style="opacity:.6">v.01/11/2026 19:16</span></div>
+      <div class="a-sub">Gestion carte &amp; horaires · <span style="opacity:.6">v.12/11/2026 17:15</span></div>
     </div>
     <button class="a-logout" onclick="logout()">Déconnexion</button>
   </div>
@@ -179,7 +179,8 @@ textarea{min-height:72px}
 
   <!-- ══ PANEL FORMULES & PRIX ══ -->
   <div class="panel active" id="panel-formules">
-    <div class="section-title">Formules &amp; tarifs — modifiez les prix directement ici</div>
+    <div class="section-title">Formules &amp; textes</div>
+    <p style="background:#2a2310;border:1px solid #93711b;border-radius:10px;padding:12px 14px;margin:0 0 16px;font-size:.88rem;line-height:1.5">💡 <b>Les prix ne se changent plus ici.</b> Ils sont repris automatiquement de la carte de l'<b>appli de commande</b> (admin carte) : Moules-frites, Calamars, Fish &amp; chips, Enfant 0-5 ans et Enfant/Ado 6-17 ans. Un produit désactivé dans l'appli disparaît aussi du site. La page « Carte » du site affiche toute la carte de l'appli en direct. Ici, tu gardes la main sur les noms affichés, les libellés et les textes.</p>
 
     <div class="prix-grid">
 
@@ -190,8 +191,8 @@ textarea{min-height:72px}
         <div class="prix-card-name">Moules Frites</div>
         <label>Nom affiché sur le site</label>
         <input type="text" id="f-moules-name" value="Moules Frites"/>
-        <label>Prix (ex : 19,90)</label>
-        <input type="text" id="f-moules-price" value="19,90" placeholder="19,90"/>
+        <label>Prix (ex : 19,90) — géré dans l'appli</label>
+        <input type="text" id="f-moules-price" value="19,90" placeholder="19,90" readonly title="Prix repris de l'appli de commande" style="opacity:.5;cursor:not-allowed"/>
       </div>
 
       <!-- CALAMARS ADULTE -->
@@ -201,8 +202,8 @@ textarea{min-height:72px}
         <div class="prix-card-name">Calamars Frites</div>
         <label>Nom affiché sur le site</label>
         <input type="text" id="f-calamars-name" value="Calamars Frites"/>
-        <label>Prix (ex : 19,90)</label>
-        <input type="text" id="f-calamars-price" value="19,90" placeholder="19,90"/>
+        <label>Prix (ex : 19,90) — géré dans l'appli</label>
+        <input type="text" id="f-calamars-price" value="19,90" placeholder="19,90" readonly title="Prix repris de l'appli de commande" style="opacity:.5;cursor:not-allowed"/>
       </div>
 
       <!-- FISH & CHIPS -->
@@ -212,8 +213,8 @@ textarea{min-height:72px}
         <div class="prix-card-name">Fish &amp; Chips</div>
         <label>Nom affiché sur le site</label>
         <input type="text" id="f-fish-name" value="Fish &amp; Chips"/>
-        <label>Prix (ex : 15,90)</label>
-        <input type="text" id="f-fish-price" value="15,90" placeholder="15,90"/>
+        <label>Prix (ex : 15,90) — géré dans l'appli</label>
+        <input type="text" id="f-fish-price" value="15,90" placeholder="15,90" readonly title="Prix repris de l'appli de commande" style="opacity:.5;cursor:not-allowed"/>
       </div>
 
       <!-- ENFANT TRANCHE 1 -->
@@ -223,8 +224,8 @@ textarea{min-height:72px}
         <div class="prix-card-name">Tranche d'âge 1</div>
         <label>Libellé (ex : 0 – 5 ans)</label>
         <input type="text" id="f-enfant1-label" value="0 – 5 ans"/>
-        <label>Prix affiché (ex : Gratuit)</label>
-        <input type="text" id="f-enfant1-price" value="Gratuit" placeholder="Gratuit"/>
+        <label>Prix affiché (ex : Gratuit) — géré dans l'appli</label>
+        <input type="text" id="f-enfant1-price" value="Gratuit" placeholder="Gratuit" readonly title="Prix repris de l'appli de commande" style="opacity:.5;cursor:not-allowed"/>
       </div>
 
       <!-- ENFANT TRANCHE 2 -->
@@ -234,8 +235,8 @@ textarea{min-height:72px}
         <div class="prix-card-name">Tranche d'âge 2</div>
         <label>Libellé (ex : 6 – 17 ans · Moules ou Calamars à volonté)</label>
         <input type="text" id="f-enfant2-label" value="6 – 17 ans · Moules ou Calamars à volonté"/>
-        <label>Prix (ex : 15,90)</label>
-        <input type="text" id="f-enfant2-price" value="15,90" placeholder="15,90"/>
+        <label>Prix (ex : 15,90) — géré dans l'appli</label>
+        <input type="text" id="f-enfant2-price" value="15,90" placeholder="15,90" readonly title="Prix repris de l'appli de commande" style="opacity:.5;cursor:not-allowed"/>
       </div>
 
       <!-- DESCRIPTION MENU ENFANT -->
@@ -243,7 +244,7 @@ textarea{min-height:72px}
         <div class="prix-card-ico">📝</div>
         <div class="prix-card-name">Texte description enfant</div>
         <label>Description affichée sous le menu enfant</label>
-        <textarea id="f-enfant-desc" rows="3">Les 0–5 ans mangent gratuitement avec un adulte à table. De 6 à 17 ans : moules ou calamars à volonté, frites maison.</textarea>
+        <textarea id="f-enfant-desc" rows="3">Les 0–5 ans mangent gratuitement avec un adulte à table. De 6 à 17 ans : moules ou calamars à volonté, frites fraîches.</textarea>
       </div>
 
     </div>
