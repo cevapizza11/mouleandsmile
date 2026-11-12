@@ -89,6 +89,15 @@
   .footer-links{ display:flex; justify-content:center; gap:22px; font-size:0.88rem; color: var(--text-muted); margin-bottom:14px; }
   .footer-links a:hover{ color: var(--gold); }
   .build-tag{ font-family: var(--font-mono); font-size:0.66rem; color:#5c5439; }
+  .subcat{ font-family: var(--font-mono); font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--gold-deep); margin:26px 0 4px; }
+  .subcat:first-child{ margin-top:0; }
+  .sauces-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+  .sauce{ background: var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  .sauce .menu-row-name{ font-size:1.1rem; }
+  .enfant-list{ margin-top:6px; color: var(--text-muted); font-size:0.86rem; }
+  .etat{ font-family: var(--font-mono); font-size:0.7rem; color:#5c5439; text-align:center; margin-top:10px; }
+  .chargement{ text-align:center; color: var(--text-muted); padding:60px 0; font-family: var(--font-mono); font-size:0.85rem; }
+  .mentions{ font-size:0.8rem; color: var(--text-muted); text-align:center; line-height:1.7; padding:32px 0 0; }
 </style>
 </head>
 <body>
@@ -106,166 +115,19 @@
   <div class="wrap">
     <div class="eyebrow">La carte</div>
     <h1>Moules-frites à volonté & alternatives marines</h1>
-    <p>Self-service, du petit-déjeuner au dernier service du soir. Tarifs prévisionnels — susceptibles d'ajustement avant l'ouverture.</p>
+    <p>Service continu en salle et en terrasse, 11h30 – 23h. Tarifs prévisionnels, susceptibles d'ajustement avant l'ouverture.</p>
     <img src="moules-photo.jpg" alt="Moules fraîches ouvertes, gros plan" style="width:100%; max-width:420px; border-radius:16px; display:block; margin:28px auto 0; object-fit:cover; aspect-ratio:16/10;">
   </div>
 </section>
 
-<section class="menu-section">
-  <div class="wrap">
-    <div class="menu-section-title">Restaurant — Moules-frites à volonté</div>
-    <div class="menu-section-sub">Service continu en salle et en terrasse, 11h30 – 23h</div>
+<!-- La carte est lue en direct dans l'appli de commande (Firestore config/carte_v2).
+     Modifier la carte dans l'admin de l'appli = la carte du site change toute seule.
+     Seuls les produits ACTIFS sont affichés. -->
+<main id="carte"><div class="chargement">Chargement de la carte…</div></main>
 
-    <p class="note" style="margin-top:-16px; margin-bottom:28px;">Moules Bouzigues AOP, 6 sauces maison : marinière, roquefort, curry, crème-échalote, tomate-chorizo, provençale</p>
-
-    <div class="highlight-card">
-      <div class="highlight-tag">Les 3 paliers</div>
-      <div class="menu-row" style="border:none; padding-top:0;">
-        <div>
-          <div class="menu-row-name">Palier 1 — À volonté seul</div>
-          <div class="menu-row-desc">Moules-frites à volonté, sauce au choix.</div>
-        </div>
-        <div class="menu-row-price">21,90€</div>
-      </div>
-      <div class="menu-row">
-        <div>
-          <div class="menu-row-name">Palier 2 — À volonté + boisson</div>
-          <div class="menu-row-desc">Moules-frites à volonté, boisson incluse.</div>
-        </div>
-        <div class="menu-row-price">24,90€</div>
-      </div>
-      <div class="menu-row">
-        <div>
-          <div class="menu-row-name">Palier 3 — À volonté + boisson + dessert</div>
-          <div class="menu-row-desc">La formule complète.</div>
-        </div>
-        <div class="menu-row-price">28,90€</div>
-      </div>
-    </div>
-
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Calamars à volonté</div>
-        <div class="menu-row-desc">Alternative marine, frits maison.</div>
-      </div>
-      <div class="menu-row-price">19,90€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Fish & chips maison</div>
-        <div class="menu-row-desc">Portion unique, filet de poisson pané et frites.</div>
-      </div>
-      <div class="menu-row-price">14,90€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Dessert du jour</div>
-        <div class="menu-row-desc">Hors palier 3.</div>
-      </div>
-      <div class="menu-row-price">3,50€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Enfant / Ado (8-17 ans)</div>
-        <div class="menu-row-desc">Moules-frites à volonté, tranche unique.</div>
-      </div>
-      <div class="menu-row-price">15,90€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Enfant (0-7 ans)</div>
-        <div class="menu-row-desc">Offert pour 1 adulte payant (palier 1 minimum). Boisson en supplément.</div>
-      </div>
-      <div class="menu-row-price free">Gratuit (+3€ boisson)</div>
-    </div>
-  </div>
-</section>
-
-<section class="menu-section">
-  <div class="wrap">
-    <div class="menu-section-title">Petit-déjeuner</div>
-    <div class="menu-section-sub">8h – 10h</div>
-
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Continental</div>
-        <div class="menu-row-desc">Viennoiserie, boisson chaude, jus de fruit.</div>
-      </div>
-      <div class="menu-row-price">8,50€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Complet</div>
-        <div class="menu-row-desc">Formule continentale enrichie.</div>
-      </div>
-      <div class="menu-row-price">11,50€</div>
-    </div>
-  </div>
-</section>
-
-<section class="menu-section">
-  <div class="wrap">
-    <div class="menu-section-title">Pichets & Vente à emporter</div>
-    <div class="menu-section-sub">Sur place ou à emporter, 11h30 – 23h</div>
-
-    <div class="highlight-card">
-      <div class="highlight-tag">Le concept</div>
-      <div class="menu-row-name" style="margin-bottom:8px;">Apportez votre plat, repartez plein</div>
-      <div class="menu-row-desc">Amenez votre propre cocotte, plat ou saladier — on vous sert à la louche, moules et frites séparément, autant que vous voulez.</div>
-    </div>
-
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Pichet de vin 50cl</div>
-      </div>
-      <div class="menu-row-price">10,00€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Pichet concert (jeudi/samedi)</div>
-        <div class="menu-row-desc">-50% les soirs de concert.</div>
-      </div>
-      <div class="menu-row-price">5,00€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Cornet à emporter — petit / moyen / grand</div>
-        <div class="menu-row-desc">Moules ou calamars, à emporter de 11h30 à 23h.</div>
-      </div>
-      <div class="menu-row-price">10€ / 15€ / 22€</div>
-    </div>
-  </div>
-</section>
-
-<section class="menu-section">
-  <div class="wrap">
-    <div class="menu-section-title">Glacier & Douceurs</div>
-    <div class="menu-section-sub">Bar véranda, ouvert toute la journée</div>
-
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Sundae / Crêpe / Gaufre garnie</div>
-        <div class="menu-row-desc">Plusieurs garnitures au choix.</div>
-      </div>
-      <div class="menu-row-price">4,50€ – 7,00€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Granita</div>
-        <div class="menu-row-desc">30cl ou 50cl.</div>
-      </div>
-      <div class="menu-row-price">3,50€ / 5,00€</div>
-    </div>
-    <div class="menu-row">
-      <div>
-        <div class="menu-row-name">Jus d'orange frais pressé</div>
-        <div class="menu-row-desc">Pressé à la commande.</div>
-      </div>
-      <div class="menu-row-price">4,50€</div>
-    </div>
-
-    <p class="note">Carte boissons (softs, bière pression, café) à venir</p>
-  </div>
+<section class="wrap">
+  <p class="mentions">Prix nets, en euros, TTC, service compris.<br>L'abus d'alcool est dangereux pour la santé, à consommer avec modération.<br>Liste des allergènes disponible sur demande.</p>
+  <p class="etat" id="etat"></p>
 </section>
 
 <footer>
@@ -273,9 +135,113 @@
     <div class="footer-links">
       <a href="index.html">Présentation</a>
     </div>
-    <div class="build-tag">v.01/08/2026 09:38</div>
+    <div class="build-tag">v.12/11/2026 16:45</div>
   </div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+// Copie de secours (utilisée seulement si Firebase ne répond pas)
+const CARTE_SECOURS = {"categories": [{"id": "softs", "nom": "🥤 Softs", "produits": [{"id": "b3", "prix": 2.5, "emoji": "🥤", "nom": "Coca-Cola", "actif": true, "desc": "33cl"}, {"emoji": "🍊", "prix": 2.5, "id": "b4", "desc": "33cl", "nom": "Orangina", "actif": true}, {"desc": "33cl", "actif": true, "emoji": "🍋", "prix": 2.5, "id": "b6", "nom": "Limonade"}, {"desc": "50cl", "actif": true, "nom": "Eau plate", "prix": 2, "emoji": "💧", "id": "b1"}, {"desc": "33 cl", "id": "b5", "actif": true, "nom": "Chewppes agrume", "emoji": "🥤", "prix": 2.5}, {"desc": "50cl", "actif": true, "emoji": "💧", "prix": 2, "id": "b2", "nom": "Eau gazeuse"}, {"emoji": "💧", "id": "b0", "nom": "Sirop à l'eau", "desc": "25 cl", "prix": 2, "actif": true}, {"prix": 4.5, "emoji": "🍹", "nom": "Jus de fruits préssé", "actif": true, "id": "b35", "desc": "25cl"}]}, {"produits": [{"nom": "Heineken 25cl", "id": "b7", "prix": 3.5, "emoji": "🍺", "actif": true, "desc": "25cl"}, {"actif": true, "prix": 6, "id": "b7-50", "desc": "50cl", "nom": "Heineken 50cl", "emoji": "🍺"}, {"emoji": "🍺", "desc": "25cl", "nom": "Desperados 25cl", "prix": 3.5, "id": "b8", "actif": true}, {"emoji": "🍺", "nom": "Desperados 50cl", "desc": "50cl", "id": "b8-50", "prix": 6, "actif": true}, {"actif": true, "nom": "Fruité 25cl", "prix": 3.5, "id": "b36", "emoji": "🍺", "desc": "25cl"}, {"desc": "50cl", "emoji": "🍺", "prix": 6, "id": "b36-50", "nom": "Fruité 50cl", "actif": true}, {"nom": "Blanche 25cl", "id": "b37", "emoji": "🍺", "desc": "25cl", "prix": 3.5, "actif": true}, {"desc": "50cl", "actif": true, "emoji": "🍺", "id": "b37-50", "prix": 6, "nom": "Blanche 50cl"}, {"prix": 4.5, "emoji": "🍺", "desc": "33cl", "id": "b9", "actif": true, "nom": "Bière bouteille"}, {"desc": "33cl", "emoji": "🍺", "prix": 4, "nom": "Bière sans alcool", "actif": true, "id": "b10"}], "id": "bieres", "nom": "🍺 Bières"}, {"id": "vins", "nom": "🍷 Vins", "produits": [{"subcat": "Blanc", "actif": true, "id": "b11", "nom": "Picpoul de Pinet AOP", "prix": 4.5, "emoji": "🥂", "desc": "Codet 25cl"}, {"desc": "Pichet 50cl", "actif": true, "prix": 9.5, "id": "b12", "subcat": "Blanc", "emoji": "🥂", "nom": "Picpoul de Pinet AOP"}, {"subcat": "Blanc", "id": "b13", "desc": "Bouteille 75cl", "actif": true, "prix": 17, "nom": "Picpoul de Pinet AOP", "emoji": "🥂"}, {"subcat": "Blanc", "desc": "Bouteille 75cl", "id": "b14", "actif": true, "prix": 19, "nom": "La Clape Blanc AOP", "emoji": "🥂"}, {"actif": true, "emoji": "🥂", "nom": "Gérard Bertrand Blanc", "desc": "Bouteille 75cl", "subcat": "Blanc", "id": "b15", "prix": 18}, {"actif": true, "prix": 32, "nom": "Gérard Bertrand Blanc", "id": "b16", "subcat": "Blanc", "emoji": "🥂", "desc": "Magnum 1,5L"}, {"nom": "Corbières Rosé AOP", "id": "b17", "actif": true, "desc": "Codet 25cl", "subcat": "Rosé", "emoji": "🍷", "prix": 4.5}, {"nom": "Corbières Rosé AOP", "id": "b18", "prix": 9.5, "emoji": "🍷", "actif": true, "subcat": "Rosé", "desc": "Pichet 50cl"}, {"prix": 16, "emoji": "🍷", "nom": "Corbières Rosé AOP", "actif": true, "desc": "Bouteille 75cl", "id": "b19", "subcat": "Rosé"}, {"emoji": "🍷", "desc": "Bouteille 75cl", "subcat": "Rosé", "nom": "La Clape Rosé AOP", "prix": 19, "id": "b20", "actif": true}, {"prix": 20, "emoji": "🍷", "subcat": "Rosé", "desc": "Bouteille 75cl", "actif": true, "nom": "Gérard Bertrand Rosé", "id": "b21"}, {"actif": true, "prix": 36, "desc": "Magnum 1,5L", "subcat": "Rosé", "id": "b22", "emoji": "🍷", "nom": "Gérard Bertrand Rosé"}, {"desc": "Bouteille 75cl", "emoji": "🍷", "subcat": "Rouge", "prix": 17, "actif": true, "nom": "Minervois Rouge AOP", "id": "b23"}, {"prix": 16, "emoji": "🍷", "nom": "Corbières Rouge AOP", "subcat": "Rouge", "actif": true, "desc": "Bouteille 75cl", "id": "b24"}, {"desc": "Bouteille 75cl", "subcat": "Rouge", "emoji": "🍷", "prix": 25, "actif": true, "nom": "Alta asia boutenac", "id": "b38"}, {"nom": "La Voulte de Gasperet", "actif": true, "id": "b39", "prix": 29, "emoji": "🍷", "subcat": "Rouge", "desc": "Bouteille 75cl"}]}, {"produits": [{"subcat": "Cocktails", "id": "b25", "actif": true, "emoji": "🥂", "desc": "Aperol, Prosecco, eau gazeuse — 25cl", "nom": "Spritz", "prix": 9}, {"subcat": "Cocktails", "actif": true, "id": "b26", "nom": "Mojito", "prix": 9, "emoji": "🍹", "desc": "Rhum, menthe fraîche, citron vert — 25cl"}, {"desc": "Vodka, ginger beer, citron — 25cl", "actif": true, "id": "b27", "prix": 9, "subcat": "Cocktails", "nom": "Moscow Mule", "emoji": "🍹"}, {"desc": "4cl", "subcat": "Cocktails", "actif": true, "prix": 3, "id": "b28", "emoji": "🥃", "nom": "Pastis / Ricard"}, {"actif": true, "id": "b29", "nom": "Sangria Maison", "prix": 5.5, "emoji": "🍷", "subcat": "Sangria", "desc": "Verre 25cl — Vin rouge Corbières, fruits frais"}, {"emoji": "🍷", "id": "b30", "desc": "Pichet 50cl", "subcat": "Sangria", "prix": 10, "nom": "Sangria Maison", "actif": true}, {"subcat": "Sangria", "desc": "Pichet 1L", "actif": true, "prix": 16, "nom": "Sangria Maison", "id": "b31", "emoji": "🍷"}], "nom": "🍹 Cocktails & Sangria", "id": "cocktails"}, {"nom": "🐚 Formules", "id": "formules", "produits": [{"id": "p1", "actif": true, "desc": "Moules fraîches + frites fraîches à volonté", "emoji": "🐚", "prix": 19.9, "nom": "Moules-frites à volonté"}, {"desc": "Calamars frits + frites à volonté", "emoji": "🦑", "id": "ca1", "prix": 19.9, "actif": true, "nom": "Calamars à volonté"}, {"actif": true, "prix": 15.9, "id": "fc1", "nom": "Fish & chips", "desc": "Filet de cabillaud pané + frites fraîches", "emoji": "🐟"}, {"actif": true, "desc": "9 nuggets  + frites fraîches", "prix": 15.9, "nom": "9 nuggets + frites", "id": "fc2", "emoji": "🍗"}, {"actif": true, "prix": 0, "nom": "Enfant 0-5 ans", "desc": "À volonté — 1 enfant gratuit par adulte payant", "id": "en1", "emoji": "👧"}, {"prix": 15.9, "nom": "Enfant / Ado 6-17 ans", "emoji": "🧒", "desc": "À volonté — tarif unique", "actif": true, "id": "en2"}]}, {"nom": "🍮 Desserts", "id": "desserts", "produits": [{"actif": false, "id": "d1", "prix": 3.5, "desc": "Demandez à votre serveur", "nom": "Dessert du jour", "emoji": "🍮"}, {"id": "d2", "prix": 3.5, "emoji": "🍦", "nom": "Glace italienne", "desc": "Vanille ou chocolat", "actif": false}, {"prix": 3.5, "emoji": "🍫", "desc": "", "actif": false, "nom": "Mousse au chocolat", "id": "d3"}, {"desc": "Choisissez votre nappage", "actif": true, "emoji": "🥞", "prix": 2.5, "id": "d4", "nom": "Crêpe"}, {"prix": 3, "actif": true, "nom": "Gaufre", "id": "d5", "desc": "Choisissez votre nappage", "emoji": "🧇"}, {"nom": "Sundae", "actif": true, "desc": "Glace vanille — choisissez coulis et croquant", "emoji": "🍨", "prix": 5.5, "id": "d6"}]}, {"produits": [{"desc": "cafe noir", "actif": true, "emoji": "☕", "prix": 1.5, "nom": "Café / Expresso", "id": "b32"}, {"actif": true, "prix": 1.5, "id": "b33", "desc": "café accompagné de lait", "nom": "Café noisette", "emoji": "☕"}, {"id": "b34", "emoji": "🍵", "prix": 2, "nom": "Thé / Infusion", "desc": "", "actif": true}], "id": "chauds", "nom": "☕ Chauds"}, {"id": "digestifs", "produits": [{"id": "dg1", "prix": 4.5, "emoji": "🍋🌿🍊", "nom": "Cabanel", "actif": true, "desc": "Liqueur artisanale Carcassonne — 4cl"}, {"desc": "Eau-de-vie de vin prestigieuse de Charente - 4cl", "actif": true, "id": "dg2", "emoji": "", "prix": 6, "nom": "Cognac"}, {"id": "dg3", "emoji": "", "prix": 6, "nom": "Armagnac", "actif": true, "desc": "Plus ancienne eau-de-vie de vin de Gascogne - 4cl"}], "nom": "✨ Digestifs"}, {"nom": "🌿 Sauces", "id": "sauces", "produits": [{"nom": "Marinière", "prix": 0, "emoji": "🌿", "id": "s1", "actif": true, "desc": "Vin blanc, échalotes, persil frais"}, {"emoji": "🧀", "desc": "Roquefort, noix, cognac", "id": "s2", "nom": "Roquefort", "prix": 0, "actif": true}, {"id": "s3", "emoji": "🌶️", "desc": "Curry, lait de coco, citron vert", "nom": "Curry", "actif": true, "prix": 0}, {"prix": 0, "emoji": "🥛", "nom": "Crème-échalote", "actif": true, "id": "s4", "desc": "Crème fraîche, échalotes confites"}, {"prix": 0, "actif": true, "nom": "Tomate-chorizo", "emoji": "🍅", "desc": "Tomates concassées, chorizo, piment doux", "id": "s5"}, {"desc": "Tomates, herbes de Provence, ail, olives", "actif": true, "id": "s6", "nom": "Provençale", "emoji": "🌞", "prix": 0}, {"prix": 0, "emoji": "🌞", "desc": "créme fraiche, infusion de safran", "actif": true, "id": "s7", "nom": "Safran"}, {"id": "s0", "prix": 0, "emoji": "", "desc": "na", "actif": true, "nom": "Sans Sauce"}]}], "enfantMenu": [{"actif": true, "desc": "Portion enfant adaptée + frites", "id": "me1", "nom": "Mini moules-frites", "emoji": "🐚"}, {"id": "me2", "emoji": "🍗", "nom": "Nuggets & frites", "actif": true, "desc": "5 nuggets + frites"}]};
+
+const FB_CONFIG = {
+  apiKey:            "AIzaSyDUb3LtVsMAq986DgtHwkMBeQFr8A8A2nU",
+  authDomain:        "commandemoulesmile.firebaseapp.com",
+  projectId:         "commandemoulesmile",
+  storageBucket:     "commandemoulesmile.firebasestorage.app",
+};
+
+// Ordre d'affichage des rubriques (les autres suivent dans l'ordre de l'appli)
+const ORDRE = ['formules','sauces','desserts','softs','bieres','vins','cocktails','chauds','digestifs'];
+const TITRES = { formules:'Nos formules', sauces:'Nos sauces', desserts:'Douceurs & glaces' };
+
+const esc = t => String(t ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const sansEmoji = t => String(t || '').replace(/^[^\p{L}\p{N}]+/u, '').trim();
+const actifs = c => (c.produits || []).filter(p => p.actif !== false && p.nom);
+function prix(p){
+  const n = Number(p) || 0;
+  if (n === 0) return 'Offert';
+  return n.toFixed(2).replace('.', ',') + ' €';
+}
+function ligne(p, extra){
+  const nom = p.nom || '';
+  // évite « Heineken 25cl — 25cl »
+  const desc = (p.desc && p.desc !== 'na' && !nom.toLowerCase().includes(String(p.desc).toLowerCase())) ? p.desc : '';
+  return '<div class="menu-row"><div><div class="menu-row-name">' + esc(nom) + '</div>' +
+    (desc ? '<div class="menu-row-desc">' + esc(desc) + '</div>' : '') + (extra || '') +
+    '</div><div class="menu-row-price' + (Number(p.prix) ? '' : ' free') + '">' + prix(p.prix) + '</div></div>';
+}
+function section(titre, contenu){
+  return '<section class="menu-section"><div class="wrap"><div class="menu-section-title">' + esc(titre) + '</div>' + contenu + '</div></section>';
+}
+
+function rendre(carte){
+  const cats = (carte.categories || []).slice();
+  cats.sort((a, b) => {
+    const ia = ORDRE.indexOf(a.id), ib = ORDRE.indexOf(b.id);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+  let html = '';
+  cats.forEach(c => {
+    let prods = actifs(c);
+    if (c.id === 'sauces') {
+      prods = prods.filter(p => !/sans sauce/i.test(p.nom));
+      if (!prods.length) return;
+      html += section(TITRES.sauces, '<div class="sauces-grid">' + prods.map(p =>
+        '<div class="sauce"><div class="menu-row-name">' + esc(p.nom) + '</div>' +
+        (p.desc && p.desc !== 'na' ? '<div class="menu-row-desc">' + esc(p.desc) + '</div>' : '') + '</div>').join('') + '</div>');
+      return;
+    }
+    if (!prods.length) return;
+    let contenu = '';
+    if (prods.some(p => p.subcat)) {
+      const groupes = [];
+      prods.forEach(p => {
+        const g = p.subcat || '';
+        let grp = groupes.find(x => x.nom === g);
+        if (!grp) { grp = { nom: g, prods: [] }; groupes.push(grp); }
+        grp.prods.push(p);
+      });
+      groupes.forEach(g => {
+        contenu += (g.nom ? '<div class="subcat">' + esc(g.nom) + '</div>' : '') + g.prods.map(p => ligne(p)).join('');
+      });
+    } else {
+      contenu = prods.map(p => {
+        // menu enfant 0-5 ans : on liste les plats au choix
+        if (c.id === 'formules' && /enfant 0/i.test(p.nom) && Array.isArray(carte.enfantMenu)) {
+          const e = carte.enfantMenu.filter(x => x.actif !== false && x.nom).map(x => esc(x.nom));
+          return ligne(p, e.length ? '<div class="enfant-list">Au choix : ' + e.join(' · ') + '</div>' : '');
+        }
+        return ligne(p);
+      }).join('');
+    }
+    html += section(TITRES[c.id] || sansEmoji(c.nom), contenu);
+  });
+  document.getElementById('carte').innerHTML = html || '<div class="chargement">La carte arrive bientôt.</div>';
+}
+
+function secours(raison){
+  console.info('Moule & Smile · carte de secours utilisée :', raison);
+  rendre(CARTE_SECOURS);
+  document.getElementById('etat').textContent = '';
+}
+
+(async function(){
+  try {
+    if (typeof firebase === 'undefined') throw new Error('Firebase non chargé');
+    if (!firebase.apps.length) firebase.initializeApp(FB_CONFIG);
+    if (!firebase.auth().currentUser) await firebase.auth().signInAnonymously();
+    firebase.firestore().collection('config').doc('carte_v2').onSnapshot(doc => {
+      const d = doc.exists ? doc.data() : null;
+      if (d && d.categories && d.categories.length) {
+        rendre(d);
+        document.getElementById('etat').textContent = '● carte à jour';
+      } else secours('document vide');
+    }, err => secours(err.message));
+  } catch (err) { secours(err.message); }
+})();
+</script>
 </body>
 </html>
