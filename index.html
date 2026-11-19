@@ -213,6 +213,15 @@ footer{padding:44px 0}
 .footer-sep{border:0;border-top:1px solid var(--line);margin:16px 0}
 .build-tag{font-family:var(--font-mono);font-size:0.66rem;color:#5c5439}
 .footer-copy{font-size:0.82rem;color:var(--text-muted)}
+/* ─── RECRUTEMENT ─── */
+.nav-job{display:none;font-family:var(--font-mono);font-size:.78rem;background:var(--gold);color:#1a1405;border-radius:999px;padding:8px 14px;font-weight:600}
+@media(max-width:640px){.nav-job{display:inline-block}}
+.recrute{padding:56px 0}
+.recrute-box{display:flex;gap:28px;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.recrute-box img{width:150px;height:150px;background:#fff;border-radius:12px;padding:6px}
+.recrute-box h2{font-family:var(--font-display);font-size:2.2rem;line-height:1.05;margin-bottom:8px}
+.recrute-box h2 em{color:var(--gold);font-style:italic}
+.recrute-box p{color:var(--text-muted);margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -230,8 +239,10 @@ footer{padding:44px 0}
       <a href="#sauces">Sauces</a>
       <a href="#infos">Horaires</a>
       <a href="#acces">Accès</a>
+      <a href="recrutement/">Recrutement</a>
       <a class="nav-cta" href="#acces">Ouverture mars 2027 →</a>
     </div>
+    <a class="nav-job" href="recrutement/">On recrute !</a>
   </div>
 </header>
 
@@ -451,6 +462,20 @@ footer{padding:44px 0}
 </section>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
+<!-- ═══════════════ RECRUTEMENT ═══════════════ -->
+<section class="recrute" id="recrutement">
+  <div class="wrap">
+    <div class="recrute-box">
+      <img src="recrutement/qr-recrutement.png" alt="QR code recrutement">
+      <div style="flex:1;min-width:240px">
+        <h2>On <em>recrute</em> pour la saison 2027 !</h2>
+        <p>Moules, frites, bar, salle, plonge — CDD saisonniers et extras, débutants bienvenus. Postule en 5 minutes depuis ton téléphone.</p>
+        <a class="btn btn-primary" href="recrutement/">Voir les postes et postuler →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="footer-inner">
@@ -464,12 +489,13 @@ footer{padding:44px 0}
         <a href="#sauces">Sauces</a>
         <a href="#infos">Horaires</a>
         <a href="#acces">Accès</a>
+        <a href="recrutement/">Recrutement</a>
       </div>
     </div>
     <hr class="footer-sep">
     <div class="footer-inner">
       <div class="footer-copy">© 2026 Moule & Smile · Saint-Pierre-la-Mer · Fleury-d'Aude</div>
-      <div class="build-tag">v.12/11/2026 17:15</div>
+      <div class="build-tag">v.19/11/2026 18:45</div>
     </div>
   </div>
 </footer>
